@@ -7,30 +7,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TagnameLocator {
+public class AllLinks {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
-		
+		driver.get("https://www.facebook.com/");
 		System.out.println(driver.getTitle());
 		System.out.println(driver.getCurrentUrl());
 		
-		List<WebElement> aTag = driver.findElements(By.tagName("a"));
+		List<WebElement> links = driver.findElements(By.tagName("a"));
 		
-		List<WebElement> divTag = driver.findElements(By.tagName("div"));
+		System.out.println("Total links are: " + links.size());
 		
-		List<WebElement> buttonTag = driver.findElements(By.tagName("button"));
-		
-		System.out.println(aTag.size());
-		
-		System.out.println(divTag.size());
-		
-		System.out.println(buttonTag.size());
-		
+		for(WebElement aa:links)
+		{
+			System.out.println(aa.getText()+"----->"+aa.getAttribute("href"));
 		}
+
+	}
 
 }

@@ -1,6 +1,6 @@
 package com.selenium.weblevel;
 
-import java.time.Duration;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -16,33 +16,29 @@ public class DropdownHandling {
 		
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		driver.get("https://www.globalsqa.com/demo-site/select-dropdown-menu/");
-		
+		driver.get("https://automation-practice-theta.vercel.app/dropdown");
 		System.out.println(driver.getTitle());
 		System.out.println(driver.getCurrentUrl());
 		
-		WebElement dropdownElement = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div/div/div[2]/div/div/div/p/select"));
-
-		Select sel=new Select(dropdownElement);
+		WebElement dropdownElement = driver.findElement(By.id("simple-course-dropdown"));
 		
-		sel.selectByIndex(2);
+		Select select = new Select(dropdownElement);
 		
+		select.selectByIndex(1);
 		Thread.sleep(2000);
-		
-		sel.selectByValue("BHR");
-		
+		select.selectByValue("playwright");
 		Thread.sleep(2000);
+		select.selectByVisibleText("Cypress");
 		
-		sel.selectByVisibleText("India");
+		List<WebElement> allDropdownOptions = select.getOptions();
 		
-		List<WebElement> alldropdown = sel.getOptions();
+		System.out.println("Total dropdown options are: " + allDropdownOptions.size());
 		
-		System.out.println(alldropdown.size());
-		
-		for (WebElement aa : alldropdown) {
+		for(WebElement aa:allDropdownOptions)
+		{
 			System.out.println(aa.getText());
 		}
+		
 		
 	}
 

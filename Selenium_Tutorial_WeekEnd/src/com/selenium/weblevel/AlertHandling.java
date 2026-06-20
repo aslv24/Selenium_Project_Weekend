@@ -1,5 +1,6 @@
 package com.selenium.weblevel;
 
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,12 +15,10 @@ public class AlertHandling {
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
-		
 		System.out.println(driver.getTitle());
 		System.out.println(driver.getCurrentUrl());
 		
 		WebElement loginButton = driver.findElement(By.className("signin-btn"));
-		
 		loginButton.click();
 		
 		Alert alt = driver.switchTo().alert();
@@ -27,7 +26,6 @@ public class AlertHandling {
 		System.out.println(alt.getText());
 		
 		alt.accept();
-		
 
 	}
 
